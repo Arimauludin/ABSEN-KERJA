@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <h1>Dashboard {{ user.username }}</h1>
+    
+    <div class="current-status">
+        <h2>Status Absensi Saat Ini:</h2>
+        {% if last_attendance %}
+            <p>Terakhir: <strong>{{ last_attendance.status | capitalize }}</strong> pada <strong>{{ last_attendance.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</strong></p>
+        {% else %}
+            <p>Belum ada catatan absensi.</p>
+        {% endif %}
+    </div>
+
+    <form method="POST" action="{{ url_for('dashboard') }}" class="attendance-form">
+        <button type="submit" name="action" value="check_in" class="button check-in">Check-in</button>
+        <button type="submit" name="action" value="check_out" class="button check-out">Check-out</button>
+    </form>
+
+    <p><a href="{{ url_for('history') }}">Lihat Riwayat Absensi Saya</a></p>
+    <p><a href="{{ url_for('profile') }}">Lihat Profil Saya</a></p>
+{% endblock %}

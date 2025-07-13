@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Selamat Datang{% endblock %}
+
+{% block content %}
+    <h1 style="text-align: center;">Selamat Datang di Aplikasi Absensi Kerja</h1>
+    <p style="text-align: center;">Aplikasi sederhana untuk mencatat kehadiran Anda.</p>
+    
+    <div class="auth-links">
+        <a href="{{ url_for('login') }}" class="button primary">Login Sekarang</a>
+        <a href="{{ url_for('register') }}" class="button secondary">Daftar Akun Baru</a>
+    </div>
+{% endblock %}

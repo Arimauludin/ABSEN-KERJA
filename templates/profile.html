@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Profil Pengguna{% endblock %}
+
+{% block content %}
+    <h1>Profil Pengguna</h1>
+    <p>Selamat datang di halaman profil Anda.</p>
+    
+    <div class="user-profile-info">
+        <p><strong>ID Pengguna:</strong> {{ user.id }}</p>
+        <p><strong>Nama Pengguna:</strong> {{ user.username }}</p>
+        </div>
+
+    <p><a href="{{ url_for('dashboard') }}">Kembali ke Dashboard</a></p>
+    <p><a href="{{ url_for('logout') }}">Logout</a></p>
+{% endblock %}

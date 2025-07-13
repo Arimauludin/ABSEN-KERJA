@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Riwayat Absensi{% endblock %}
+
+{% block content %}
+    <h1>Riwayat Absensi Saya</h1>
+    <p>Pengguna: **{{ user.username }}**</p>
+    
+    {% if attendances %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Status</th>
+                    <th>Waktu</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for att in attendances %}
+                    <tr>
+                        <td>{{ att.id }}</td>
+                        <td>{{ att.status | capitalize }}</td>
+                        <td>{{ att.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Belum ada riwayat absensi untuk Anda.</p>
+    {% endif %}
+{% endblock %}
